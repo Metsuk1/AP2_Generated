@@ -26,6 +26,7 @@ type PaymentRequest struct {
 	OrderId        string                 `protobuf:"bytes,1,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
 	Amount         int64                  `protobuf:"varint,2,opt,name=amount,proto3" json:"amount,omitempty"`
 	IdempotencyKey string                 `protobuf:"bytes,3,opt,name=idempotency_key,json=idempotencyKey,proto3" json:"idempotency_key,omitempty"`
+	CustomerEmail  string                 `protobuf:"bytes,4,opt,name=customer_email,json=customerEmail,proto3" json:"customer_email,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -77,6 +78,13 @@ func (x *PaymentRequest) GetAmount() int64 {
 func (x *PaymentRequest) GetIdempotencyKey() string {
 	if x != nil {
 		return x.IdempotencyKey
+	}
+	return ""
+}
+
+func (x *PaymentRequest) GetCustomerEmail() string {
+	if x != nil {
+		return x.CustomerEmail
 	}
 	return ""
 }
@@ -145,11 +153,12 @@ var File_payment_proto protoreflect.FileDescriptor
 
 const file_payment_proto_rawDesc = "" +
 	"\n" +
-	"\rpayment.proto\x12\apayment\"l\n" +
+	"\rpayment.proto\x12\apayment\"\x93\x01\n" +
 	"\x0ePaymentRequest\x12\x19\n" +
 	"\border_id\x18\x01 \x01(\tR\aorderId\x12\x16\n" +
 	"\x06amount\x18\x02 \x01(\x03R\x06amount\x12'\n" +
-	"\x0fidempotency_key\x18\x03 \x01(\tR\x0eidempotencyKey\"`\n" +
+	"\x0fidempotency_key\x18\x03 \x01(\tR\x0eidempotencyKey\x12%\n" +
+	"\x0ecustomer_email\x18\x04 \x01(\tR\rcustomerEmail\"`\n" +
 	"\x0fPaymentResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12%\n" +
 	"\x0etransaction_id\x18\x02 \x01(\tR\rtransactionId\x12\x16\n" +
